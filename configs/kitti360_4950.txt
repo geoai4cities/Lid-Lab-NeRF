@@ -1,0 +1,7 @@
+dataloader = kitti360
+path = data/kitti360
+sequence_id = 4950
+num_frames = 51
+fov_lidar = [2.0, 26.9]
+scale = 0.010504329394990998
+offset = [1307.2250542680918, 3604.6116639687925, 110.30188369430098]
