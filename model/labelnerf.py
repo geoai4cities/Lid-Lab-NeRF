@@ -21,7 +21,7 @@ from model.flow_field import FlowField
 from model.unet import UNet
 
 
-class LiDAR4D(LiDAR_Renderer):
+class Labelnerf(LiDAR_Renderer):
     def __init__(
         self,
         min_resolution=32,
@@ -265,7 +265,7 @@ class LiDAR4D(LiDAR_Renderer):
 
 
 if __name__ == '__main__':
-    model = LiDAR4D().cuda()
+    model = Labelnerf().cuda()
     x = torch.rand(100, 3).cuda()
     t = torch.tensor([0.2]).cuda()
     result = model.density(x, t)

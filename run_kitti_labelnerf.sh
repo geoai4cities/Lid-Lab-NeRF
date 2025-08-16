@@ -1,9 +1,9 @@
 #! /bin/bash
-CUDA_VISIBLE_DEVICES=0 python main_lidar4d.py \
+CUDA_VISIBLE_DEVICES=0 python main_labelnerf.py \
 --config configs/kitti360_4950.txt \
 --workspace log/kitti360_lidar4d_f4950_release \
---static_semantic_data_path /root/docker_data/MSthesis/0000004916_0000005264.ply \
---dynamic_semantic_data_path /root/docker_data/MSthesis/0000004916_0000005264_dynamic.ply \
+--static_semantic_data_path /root/docker_data/Lid-Lab-NeRF/0000004916_0000005264.ply \
+--dynamic_semantic_data_path /root/docker_data/Lid-Lab-NeRF/0000004916_0000005264_dynamic.ply \
 --lr 5e-2 \
 --num_rays_lidar 1024 \
 --iters 30000 \

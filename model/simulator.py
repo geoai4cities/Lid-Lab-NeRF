@@ -144,7 +144,7 @@ class Simulator(object):
                 save_path = os.path.join(
                         self.workspace,
                         "points",
-                        f"lidar4d_{i:04d}.npy",
+                        f"labelnerf_{i:04d}.npy",
                     )
                 os.makedirs(os.path.dirname(save_path), exist_ok=True)
                 np.save(save_path, pred_lidar)
@@ -154,7 +154,7 @@ class Simulator(object):
                 save_path = os.path.join(
                         self.workspace,
                         "images",
-                        f"lidar4d_{i:04d}.png",
+                        f"labelnerf_{i:04d}.png",
                     )
                 os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
@@ -182,7 +182,7 @@ class Simulator(object):
             save_path = os.path.join(
                         self.workspace,
                         "video",
-                        f"lidar4d_sim.mp4",
+                        f"labelnerf_sim.mp4",
                     )
             os.makedirs(os.path.dirname(save_path), exist_ok=True)
             all_preds = np.stack(all_preds, axis=0)

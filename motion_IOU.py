@@ -67,8 +67,8 @@ def lidar_to_pano_with_intensities_and_labels(
 
 
 
-gt_folder = "/root/docker_data/MSthesis/data/kitti360/train"
-sim_folder = "/root/docker_data/MSthesis/log/kitti360_lidar4d_f4950_release/simulation/points"
+gt_folder = "/root/docker_data/Lid-Lab-NeRF/data/kitti360/train"
+sim_folder = "/root/docker_data/Lid-Lab-NeRF/log/kitti360_lidar4d_f4950_release/simulation/points"
 import cv2
 import matplotlib.pyplot as plt
 gt_files = sorted(

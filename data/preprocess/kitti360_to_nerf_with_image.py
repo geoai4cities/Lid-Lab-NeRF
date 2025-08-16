@@ -19,7 +19,7 @@ def get_arg_parser():
         "--static_semantic_data_path",
         type=str,
         required=True,  
-        default="/root/docker_data/MSthesis/0000004916_0000005264.ply",
+        default="/root/docker_data/Lid-Lab-NeRF/0000004916_0000005264.ply",
         help="Path to the semantic 3D file or directory",
     )
     
@@ -27,7 +27,7 @@ def get_arg_parser():
         "--dynamic_semantic_data_path",
         type=str,
         required=True,  
-        default="/root/docker_data/MSthesis/0000004916_0000005264_dynamic.ply",
+        default="/root/docker_data/Lid-Lab-NeRF/0000004916_0000005264_dynamic.ply",
         help="Path to the semantic 3D file or directory",
     )
     return parser

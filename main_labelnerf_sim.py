@@ -7,7 +7,7 @@ import configargparse
 from pathlib import Path
 from packaging import version as pver
 from data.preprocess.kitti360_loader import KITTI360Loader
-from model.lidar4d import LiDAR4D
+from model.labelnerf import Labelnerf
 from model.simulator import Simulator
 from utils.misc import set_seed
 
@@ -36,7 +36,7 @@ def get_arg_parser():
     parser.add_argument("--fp16", type=bool, default=True, help="use amp mixed precision training")
     parser.add_argument("--num_steps", type=int, default=768, help="num steps sampled per ray")
 
-    ### LiDAR4D (keep the same as training)
+    ### Labelnerf (keep the same as training)
     parser.add_argument("--min_resolution", type=int, default=32, help="minimum resolution for planes")
     parser.add_argument("--base_resolution", type=int, default=512, help="minimum resolution for hash grid")
     parser.add_argument("--max_resolution", type=int, default=32768, help="maximum resolution for hash grid")
@@ -192,7 +192,7 @@ def main():
     opt.near_lidar = opt.near_lidar * opt.scale
     opt.far_lidar = opt.far_lidar * opt.scale
 
-    model = LiDAR4D(
+    model = Labelnerf(
         min_resolution=opt.min_resolution,
         base_resolution=opt.base_resolution,
         max_resolution=opt.max_resolution,
@@ -223,7 +223,7 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     sim = Simulator(
-        "lidar4d",
+        "labelnerf",
         opt,
         model,
         device=device,

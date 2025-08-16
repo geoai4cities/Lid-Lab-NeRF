@@ -4,7 +4,7 @@ import numpy as np
 import configargparse
 from pyntcloud import PyntCloud
 from pathlib import Path
-from model.lidar4d import LiDAR4D
+from model.labelnerf import Labelnerf
 from model.runner import Trainer
 from utils.metrics import DepthMeter, IntensityMeter, RaydropMeter, PointsMeter, LabelMeter
 from utils.misc import set_seed
@@ -16,8 +16,8 @@ def get_arg_parser():
 
     parser.add_argument("--config", is_config_file=True, default="configs/kitti360_4950.txt", help="config file path")
     parser.add_argument("--workspace", type=str, default="workspace")
-    parser.add_argument("--static_semantic_data_path", type=str, default = "/root/docker_data/MSthesis/0000004916_0000005264.ply")
-    parser.add_argument("--dynamic_semantic_data_path", type=str, default = "/root/docker_data/MSthesis/0000004916_0000005264_dynamic.ply")
+    parser.add_argument("--static_semantic_data_path", type=str, default = "/root/docker_data/Lid-Lab-NeRF/0000004916_0000005264.ply")
+    parser.add_argument("--dynamic_semantic_data_path", type=str, default = "/root/docker_data/Lid-Lab-NeRF/0000004916_0000005264_dynamic.ply")
     parser.add_argument("--refine", action="store_true", help="refine mode")
     parser.add_argument("--test", action="store_true", help="test mode")
     parser.add_argument("--test_eval", action="store_true", help="test and eval mode")
@@ -37,7 +37,7 @@ def get_arg_parser():
     parser.add_argument("--fov_lidar", type=float, nargs="*", default=[2.0, 26.9], help="fov up and fov range of lidar")
     parser.add_argument("--num_frames", type=int, default=51, help="total number of sequence frames")
 
-    ### LiDAR4D
+    ### labelnerf
     parser.add_argument("--min_resolution", type=int, default=32, help="minimum resolution for planes")
     parser.add_argument("--base_resolution", type=int, default=512, help="minimum resolution for hash grid")
     parser.add_argument("--max_resolution", type=int, default=32768, help="maximum resolution for hash grid")
@@ -151,7 +151,7 @@ def main():
     opt.near_lidar = opt.near_lidar * opt.scale
     opt.far_lidar = opt.far_lidar * opt.scale
 
-    model = LiDAR4D(
+    model = Labelnerf(
         min_resolution=opt.min_resolution,
         base_resolution=opt.base_resolution,
         max_resolution=opt.max_resolution,
@@ -222,7 +222,7 @@ def main():
 
     if opt.test or opt.test_eval or opt.refine:
         trainer = Trainer(
-            "lidar4d",
+            "labelnerf",
             opt,
             model,
             device=device,
@@ -322,7 +322,7 @@ def main():
         )
 
         trainer = Trainer(
-            "lidar4d",
+            "labelnerf",
             opt,
             model,
             device=device,
