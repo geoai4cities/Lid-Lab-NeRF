@@ -85,7 +85,7 @@ Set corresponding sequence config path in `--config` and you can modify logging 
 Run the following command:
 ```bash
 # KITTI-360
-bash run_kitti_lidar4d.sh
+bash run_kitti_labelnerf.sh
 ```
 
 <!-- <a id="simulation"></a> -->
@@ -100,7 +100,7 @@ To generate denser scans increase `--H_lidar` and `--W_lidar` to something like 
 Check the sequence config and corresponding workspace and model path (`--ckpt`).  
 Run the following command:
 ```bash
-bash run_kitti_lidar4d_sim.sh
+bash run_kitti_labelnerf_sim.sh
 ```
 The results will be saved in the workspace folder.
 
