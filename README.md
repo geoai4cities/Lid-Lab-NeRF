@@ -12,8 +12,8 @@ Lid-Lab-NeRF is pytorch-based NeRF framwork to generate novel scans for LiDAR po
 git clone https://github.com/Kafka2122/Lid-Lab-NeRF.git
 cd Lid-Lab-NeRF
 
-conda create -n lidar4d python=3.9
-conda Lid-Lab-NeRF
+conda create -n labelnerf python=3.9
+conda activate labelnerf
 
 # PyTorch
 # CUDA 12.1
